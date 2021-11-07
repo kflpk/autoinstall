@@ -1,4 +1,4 @@
 #!/bin/bash
 
-$SUDO echo $USER
-$SUDO dnf install snapd
+$SUDO dnf install -y snapd
+$SUDO dnf install -y util-linux-user

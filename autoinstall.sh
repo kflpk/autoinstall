@@ -44,7 +44,8 @@ curl \
 exa \
 rsync \
 scp \
-sshd"
+sshd \
+thunderbird"
 
 CARGO_PACKAGES="bat \
 tldr \
@@ -73,19 +74,14 @@ else if [ -e /bin/dnf ]; then
   ./snap-fedora.sh
 else if [ -e /bin/pacman ]; then
   ./snap-arch.sh
-fi 
-fi 
+fi
+fi
 fi
 
 for i in $(seq 0 $(( ${#SNAP_PACKAGES[@]}-1)) )
 do
   $SUDO snap install ${SNAP_PACKAGES[$i]}
 done
-
-
-
-
-
 
 ####### GET RID OF OLD BASH DOTFILES ########
 if [ -e ~/.bashrc ]; then
@@ -99,12 +95,6 @@ fi
 git clone --recursive "https://github.com/Yoshua-chan/dotfiles" ~/.dotfiles
 
 (cd ~/.dotfiles; stow */)
-
-
-
-
-
-
 
 
 ##### INSATLL VIM-PLUG #######
