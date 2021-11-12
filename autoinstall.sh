@@ -47,7 +47,7 @@ scp \
 sshd \
 python3 \
 python3-pip \
-python3-venv
+python3-venv \
 thunderbird"
 
 CARGO_PACKAGES="bat \
@@ -61,6 +61,14 @@ SNAP_PACKAGES=("code --classic"
 "discord"
 "spotify")
 
+PYTHON_PACKAGES="matplotlib \
+scipy \
+numpy \
+pandas \
+pyqt5 \
+pyqtgraph"
+
+
 ###### INSTALL ALL PACKAGES #########
 for package in $PACKAGES
 do
@@ -68,6 +76,7 @@ do
 done
 
 cargo install $CARGO_PACKAGES
+pip3 install -r python-packages
 
 # INSTALL SNAPS AND SNAP PACKAGES
 
@@ -80,6 +89,8 @@ else if [ -e /bin/pacman ]; then
 fi
 fi
 fi
+
+sleep 15
 
 for i in $(seq 0 $(( ${#SNAP_PACKAGES[@]}-1)) )
 do
