@@ -6,3 +6,4 @@ makepkg -si
 
 $SUDO systemctl enable --now snapd.socket
 $SUDO ln -s /var/lib/snapd/snap /snap
+

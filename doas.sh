@@ -21,3 +21,4 @@ else
     $SUDO make install
     $SUDO bash -c "echo permit persist $USER as root >> /usr/local/etc/doas.conf"
 fi
+

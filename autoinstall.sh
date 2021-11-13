@@ -23,32 +23,37 @@ mkdir -p ~/.config ~/.cache ~/.local/share ~/.local/bin
 
 PACKAGES="vim \
 neovim \
-zsh \
-git \
-dunst \
-bspwm \
-sxhkd \
-tmux \
-htop \
-stow \
-cargo \
+build-essentials \
 gcc \
 g++ \
 clang \
-make \
-cmake \
-build-essentials \
-firefox \
-wget \
-curl \
-exa \
-rsync \
-scp \
-sshd \
+cargo \
 python3 \
 python3-pip \
 python3-venv \
-thunderbird"
+make \
+cmake \
+git \
+zsh \
+exa \
+tmux \
+htop \
+wget \
+curl \
+rsync \
+scp \
+sshd \
+stow \
+bspwm \
+sxhkd \
+dunst \
+firefox \
+thunderbird \
+gimp \
+pcmanfm"
+
+GNOME_PACKAGES="ark \
+gnome-tweaks"
 
 CARGO_PACKAGES="bat \
 tldr \
@@ -75,6 +80,14 @@ do
   $INSTALL $package
 done
 
+# PACKAGES FOR GNOME
+
+if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
+	echo "GNOME detected, installing additional packages"
+	$INSTALL $GNOME_PACKAGES
+fi
+
+# CARGO AND PIP
 cargo install $CARGO_PACKAGES
 pip3 install -r python-packages
 
@@ -97,6 +110,7 @@ do
   $SUDO snap install ${SNAP_PACKAGES[$i]}
 done
 
+
 ####### GET RID OF OLD BASH DOTFILES ########
 if [ -e ~/.bashrc ]; then
   mv ~/.bashrc ~/.bashrc.old
@@ -117,3 +131,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 $SUDO chsh $USER -s /bin/zsh
+
+
+
