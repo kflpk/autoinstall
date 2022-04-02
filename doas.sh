@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ -e /bin/doas ]; then
+    echo "doas.sh: Doas already on the system, skipping installation"
     return 0
 else 
     # INSTALLING BUILD TOOLS DEPENDING ON THE OS
@@ -9,7 +10,7 @@ else
     else if [ -e /bin/dnf ]; then
         $SUDO dnf install gcc gcc-c++ make flex bison pam-devel byacc
     else
-        echo 'distro not found'
+        echo "doas.sh: Distro not found, skipping installation"
         return 1
     fi
     fi 

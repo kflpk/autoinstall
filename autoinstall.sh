@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Check if the system has sudo or doas
+
 if [ -e /bin/sudo ]; then
   export SUDO=sudo
 else if [ -e /bin/doas ]; then
@@ -9,6 +10,7 @@ fi
 fi
 
 # Check what package manager the system has
+
 if [ -e /bin/apt ]; then
   export INSTALL="$SUDO apt install -y"
 else if [ -e /bin/pacman ]; then
@@ -21,6 +23,7 @@ fi
 
 mkdir -p ~/.config ~/.cache ~/.local/share ~/.local/bin
 
+############## PACKAGE LISTS ################
 PACKAGES="vim \
 neovim \
 build-essentials \
@@ -66,15 +69,8 @@ SNAP_PACKAGES=("code --classic"
 "discord"
 "spotify")
 
-PYTHON_PACKAGES="matplotlib \
-scipy \
-numpy \
-pandas \
-pyqt5 \
-pyqtgraph"
-
-
 ###### INSTALL ALL PACKAGES #########
+
 for package in $PACKAGES
 do
   $INSTALL $package
@@ -88,6 +84,7 @@ if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
 fi
 
 # CARGO AND PIP
+
 cargo install $CARGO_PACKAGES
 pip3 install -r python-packages
 
@@ -110,7 +107,6 @@ do
   $SUDO snap install ${SNAP_PACKAGES[$i]}
 done
 
-
 ####### GET RID OF OLD BASH DOTFILES ########
 if [ -e ~/.bashrc ]; then
   mv ~/.bashrc ~/.bashrc.old
@@ -124,6 +120,9 @@ git clone --recursive "https://github.com/Yoshua-chan/dotfiles" ~/.dotfiles
 
 (cd ~/.dotfiles; stow */)
 
+############### GIT ALIASES ###################
+
+./git-config
 
 ##### INSATLL VIM-PLUG #######
 
@@ -131,6 +130,3 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 $SUDO chsh $USER -s /bin/zsh
-
-
-
