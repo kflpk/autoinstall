@@ -86,7 +86,7 @@ fi
 # CARGO AND PIP
 
 cargo install $CARGO_PACKAGES
-pip3 install -r python-packages
+pip3 install -r python-packages.txt
 
 # INSTALL SNAPS AND SNAP PACKAGES
 
@@ -120,9 +120,10 @@ git clone --recursive "https://github.com/Yoshua-chan/dotfiles" ~/.dotfiles
 
 (cd ~/.dotfiles; stow */)
 
-############### GIT ALIASES ###################
+############### dev stuff ###################
 
-./git-config
+./git-config.sh
+./vscode.sh
 
 ##### INSATLL VIM-PLUG #######
 

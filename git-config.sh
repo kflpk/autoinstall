@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO: ssh keygen here, will do that later
+ssh-keygen -t ssh -b 4096
 
 git config --global alias.adog "log --all --decorate --oneline --graph"
 git config --global alias.ll   "log --oneline"
