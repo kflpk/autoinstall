@@ -26,9 +26,19 @@ mkdir -p ~/.config ~/.cache ~/.local/share ~/.local/bin
 ############## PACKAGE LISTS ################
 PACKAGES="vim \
 neovim \
-build-essentials \
+build-essential \
+binutils
 gcc \
 g++ \
+gcc-avr \
+avr-libc \
+avrdude \
+binutils-msp430 \
+gcc-msp430 \
+gdb-msp430 \
+msp430-libc \
+msp430mcu \
+mspdebug \
 clang \
 cargo \
 python3 \
@@ -53,6 +63,7 @@ dunst \
 firefox \
 thunderbird \
 gimp \
+youtube-dl
 pcmanfm"
 
 GNOME_PACKAGES="ark \
