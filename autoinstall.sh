@@ -64,7 +64,14 @@ firefox \
 thunderbird \
 gimp \
 youtube-dl
-pcmanfm"
+pcmanfm \
+pandoc \
+texlive \
+latexmk \
+texlive-latex-extra \
+texlive-lang-polish \
+texlive-fonts-extra \
+texlive-bibtex-extra"
 
 GNOME_PACKAGES="ark \
 gnome-tweaks"
