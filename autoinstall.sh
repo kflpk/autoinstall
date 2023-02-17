@@ -21,7 +21,7 @@ fi
 fi
 fi
 
-mkdir -p ~/.config ~/.cache ~/.local/share ~/.local/bin
+mkdir -p ~/.config ~/.cache ~/.local/share/applications ~/.local/share/fonts ~/.local/bin
 
 ############## PACKAGE LISTS ################
 PACKAGES="vim \
@@ -40,7 +40,6 @@ msp430-libc \
 msp430mcu \
 mspdebug \
 clang \
-cargo \
 python3 \
 python3-pip \
 python3-venv \
@@ -57,13 +56,10 @@ rsync \
 scp \
 sshd \
 stow \
-bspwm \
-sxhkd \
-dunst \
 firefox \
 thunderbird \
 gimp \
-youtube-dl
+youtube-dl \
 pcmanfm \
 pandoc \
 texlive \
@@ -71,7 +67,9 @@ latexmk \
 texlive-latex-extra \
 texlive-lang-polish \
 texlive-fonts-extra \
-texlive-bibtex-extra"
+texlive-bibtex-extra \
+flatpak \
+python3-tk"
 
 GNOME_PACKAGES="ark \
 gnome-tweaks"
@@ -83,9 +81,7 @@ tokei \
 exa"
 
 SNAP_PACKAGES=("code --classic"
-"scrcpy"
-"discord"
-"spotify")
+"scrcpy")
 
 ###### INSTALL ALL PACKAGES #########
 
@@ -103,7 +99,12 @@ fi
 
 # CARGO AND PIP
 
+./rustup.sh
+
 cargo install $CARGO_PACKAGES
+
+./alacritty.sh
+
 pip3 install -r python-packages.txt
 
 # INSTALL SNAPS AND SNAP PACKAGES

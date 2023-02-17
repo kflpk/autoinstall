@@ -18,7 +18,7 @@ rm -r $FONTS/*.zip
 
 for dir in $FONTS/fonts/*
 do
-  $SUDO cp -r $dir /usr/share/fonts/truetype/
+  $SUDO cp -r $dir $HOME/.local/share/fonts
 done
 
 $SUDO fc-cache -fv
