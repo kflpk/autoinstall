@@ -99,32 +99,14 @@ fi
 
 # CARGO AND PIP
 
-./rustup.sh
+compile/rustup.sh
 
 cargo install $CARGO_PACKAGES
 
-./alacritty.sh
+compile/alacritty.sh
 
 pip3 install -r python-packages.txt
 
-# INSTALL SNAPS AND SNAP PACKAGES
-
-if [ -e /bin/apt ]; then
-  ./snap-debian.sh
-else if [ -e /bin/dnf ]; then
-  ./snap-fedora.sh
-else if [ -e /bin/pacman ]; then
-  ./snap-arch.sh
-fi
-fi
-fi
-
-sleep 15
-
-for i in $(seq 0 $(( ${#SNAP_PACKAGES[@]}-1)) )
-do
-  $SUDO snap install ${SNAP_PACKAGES[$i]}
-done
 
 ####### GET RID OF OLD BASH DOTFILES ########
 if [ -e ~/.bashrc ]; then
@@ -135,14 +117,13 @@ if [ -e ~/.bash_profile ]; then
   mv ~/.bash_profile ~/.bash_profile.old
 fi
 
-git clone --recursive "https://github.com/Yoshua-chan/dotfiles" ~/.dotfiles
+git clone --recursive "https://github.com/kflpk/dotfiles" ~/.dotfiles
 
 (cd ~/.dotfiles; stow */)
 
 ############### dev stuff ###################
 
 ./git-config.sh
-./vscode.sh
 
 ##### INSATLL VIM-PLUG #######
 
