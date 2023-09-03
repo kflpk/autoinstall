@@ -13,3 +13,6 @@ git checkout "zsh-5.8"
 
 make
 sudo make install
+
+sudo bash -c 'echo "usr/local/bin/zsh" >> /etc/shells'
+sudo chsh $USER -s /usr/local/bin/zsh
